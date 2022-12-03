@@ -38,6 +38,6 @@ app.post("/login", async (req, res) => {
     res.json({ access_token: 'access token here' });
 });
 
-app.listen(5000, () => {
-    console.log("Running in port = " + 5000);
+app.listen(process.env.PORT || 5000, () => {
+    console.log("Running in port = " + process.env.PORT);
 });
