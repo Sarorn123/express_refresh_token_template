@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 require('dotenv').config();
-require("./db");
+// require("./db");
 const path = require("path");
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
@@ -32,7 +32,10 @@ app.post("/login", async (req, res) => {
 
     const user = {
         username: "jonh",
-        id: 1
+        id: 1,
+        roles: [
+            "Admin",
+        ]
     }
 
     const access_token = jwt.sign(user, process.env.JWT_SECRET, { expiresIn: '10s' });
@@ -54,6 +57,7 @@ app.get('/refresh', cookieMiddleware, (req, res) => {
     const user = {
         username: req.user.username,
         id: req.user.id,
+        roles: req.user.roles,
     };
     const access_token = jwt.sign(user, process.env.JWT_SECRET, { expiresIn: '10s' });
     res.status(200).json({access_token: access_token, user: user});
