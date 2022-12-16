@@ -50,7 +50,7 @@ app.get("/login", async (req, res) => {
         sameSite: 'none',
         maxAge: 7 * 24 * 60 * 60 * 1000 // 7days must equal to refresh token life time
     });
-    res.json({ user: user, access_token: access_token });
+    return res.json({ user: user, access_token: access_token });
 });
 
 app.get('/refresh', cookieMiddleware, (req, res) => {
