@@ -60,7 +60,7 @@ app.get('/refresh', cookieMiddleware, (req, res) => {
         roles: req.user.roles,
     };
     const access_token = jwt.sign(user, process.env.JWT_SECRET, { expiresIn: '10s' });
-    res.status(200).json({access_token: access_token, user: user});
+    res.status(200).json({ access_token: access_token, user: user });
 });
 
 app.get('/logout', authMiddleware, (req, res) => {
@@ -69,10 +69,10 @@ app.get('/logout', authMiddleware, (req, res) => {
         sameSite: 'none',
         secure: true
     });
-    res.status(200).json({message: "Logout Success"});
+    res.status(200).json({ message: "Logout Success" });
 })
 
-app.get('/todo', authMiddleware , (req, res) => {
+app.get('/todo', authMiddleware, (req, res) => {
     res.status(200).json([
         {
             id: 1,
