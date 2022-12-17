@@ -28,7 +28,7 @@ app.use(express.json());
 app.use("/user", userRoute);
 app.use(cookieParser());
 
-app.get("/login", async (req, res) => {
+app.post("/login", async (req, res) => {
 
     const user = {
         username: "jonh",
